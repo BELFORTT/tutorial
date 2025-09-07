@@ -1,4 +1,9 @@
 ---
+import Navigation from './components/Navigation.astro';
+import Header from './components/Header.astro';
+import Footer from './components/Footer.astro';
+import './styles/global.css';
+
 const pageTitle = "Sobre Mim";
 
 const identify = {
@@ -13,6 +18,10 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro"];
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -22,14 +31,26 @@ const goal = 3;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<style define:vars={{skillColor, fontWeight, textCase}}>
+			h1 {
+				color: purple;
+				font-size: 4rem;
+			}
+
+			.skill {
+				color: green;
+				color: var(--skillColor);
+				font-weight: var(--fontWeight);
+				text-transform: var(--textCase);
+			}
+		</style>
 	</head>
 	<body>
-        <a href="/">Início</a>
-        <a href="/about/">Sobre</a>
-        <a href="/blog/">Blog</a>
+		<Header/>
+        <Navigation/>
 
 		<h1>Meu Site Astro segunda parte</h1>
-        <h1>{pageTitle}</h1>
+        <h2>{pageTitle}</h2>
 		<h2>Meu novo site Astro!</h2>
 
 		<p>Estou resolvendo um tutorial introdutório! Essa é a segunda página.</p>
@@ -45,11 +66,13 @@ const goal = 3;
 		<p>Minhas habilidades são:</p>
 
 		<ul>
-			{skills.map((habilidade) => <li>{habilidade}</li>)}
+			{skills.map((habilidade) => <li class="skill">{habilidade}</li>)}
 		</ul>
 
 		{happy && <p>Estou feliz em estar aprendendo Astro!</p>}
 		{finished && <p>Eu terminei esse tutorial!</p>}
 		{goal === 3 ? <p>Minha meta é terminar em 3 dias.</p> : <p>Minha meta não é terminar em 3 dias, mas em 1.</p>}
+
+		<Footer/>
 	</body>
 </html>
