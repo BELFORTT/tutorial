@@ -1,5 +1,4 @@
 ---
-import Navigation from './components/Navigation.astro';
 import Header from './components/Header.astro';
 import Footer from './components/Footer.astro';
 import './styles/global.css';
@@ -16,9 +15,12 @@ const pageTitle = "Página Inicial";
 	</head>
 	<body>
 		<Header/>
-		<Navigation/>
+		
 		<h1>Meu Site Astro</h1>
 
 		<Footer/>
+		<script>
+			'./scripts/menu.js';
+		</script>
 	</body>
 </html>
